@@ -37,4 +37,10 @@ jobs:
           package: .
         env:
           AZURE_FUNCTIONAPP_PACKAGE_PATH: .
-          NODE_VERSION: 16  # Update to Node.js 16
+        run: |
+          npm install
+          npm run build
+          npx azure-functions-core-tools@4 --version
+
+          npm install -g azure-functions-core-tools@4
+          func azure functionapp publish "react-azure-app-pagination" --javascript --nozip
