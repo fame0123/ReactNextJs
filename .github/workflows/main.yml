@@ -35,12 +35,6 @@ jobs:
           app-name: "your-azure-app-name"
           publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
           package: .
-        env:
-          AZURE_FUNCTIONAPP_PACKAGE_PATH: .
-        run: |
-          npm install
-          npm run build
-          npx azure-functions-core-tools@4 --version
 
-          npm install -g azure-functions-core-tools@4
-          func azure functionapp publish "react-azure-app-pagination" --javascript --nozip
+      - name: Install Dependencies for Azure Function
+        run: npm install
